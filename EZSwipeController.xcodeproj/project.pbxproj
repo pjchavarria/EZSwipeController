@@ -206,6 +206,7 @@
 					};
 					E11440AA1BF691CC000DDE45 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = Q9KPP7C7F3;
 						LastSwiftMigration = 0800;
 					};
 					E11440BE1BF691CC000DDE45 = {
@@ -445,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q9KPP7C7F3;
 				INFOPLIST_FILE = EZSwipeController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -458,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = Q9KPP7C7F3;
 				INFOPLIST_FILE = EZSwipeController/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
