@@ -19,7 +19,7 @@ import UIKit
     @objc optional func changedToPageIndex(_ index: Int)
 }
 
-public class EZSwipeController: UIViewController {
+open class EZSwipeController: UIViewController {
 
     public struct Constants {
         public static var Orientation: UIInterfaceOrientation {
@@ -53,23 +53,23 @@ public class EZSwipeController: UIViewController {
         public static let lightGrayColor = UIColor(red: 248, green: 248, blue: 248, alpha: 1)
     }
 
-    public var stackNavBars = [UINavigationBar]()
-    public var stackVC: [UIViewController]!
-    public var stackPageVC: [UIViewController]!
-    public var stackStartLocation: Int!
+    open var stackNavBars = [UINavigationBar]()
+    open var stackVC: [UIViewController]!
+    open var stackPageVC: [UIViewController]!
+    open var stackStartLocation: Int!
 
-    public var bottomNavigationHeight: CGFloat = 44
-    public var pageViewController: UIPageViewController!
-    public var titleButton: UIButton?
-    public var currentStackVC: UIViewController!
-    public var currentVCIndex: Int {
+    open var bottomNavigationHeight: CGFloat = 44
+    open var pageViewController: UIPageViewController!
+    open var titleButton: UIButton?
+    open var currentStackVC: UIViewController!
+    open var currentVCIndex: Int {
         return stackPageVC.index(of: currentStackVC)!
     }
-    public var datasource: EZSwipeControllerDataSource?
+    open var datasource: EZSwipeControllerDataSource?
 
-    public var navigationBarShouldBeOnBottom = false
-    public var navigationBarShouldNotExist = false
-    public var cancelStandardButtonEvents = false
+    open var navigationBarShouldBeOnBottom = false
+    open var navigationBarShouldNotExist = false
+    open var cancelStandardButtonEvents = false
 
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -181,15 +181,15 @@ public class EZSwipeController: UIViewController {
         pageViewController.didMove(toParentViewController: self)
     }
 
-    public func setupView() {
+    open func setupView() {
 
     }
-    
-    public func setFrameForCurrentOrientation(){
+
+    open func setFrameForCurrentOrientation(){
         pageViewController.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height)
     }
     
-    override public func loadView() {
+    override open func loadView() {
         super.loadView()
         stackVC = datasource?.viewControllerData()
         stackStartLocation = datasource?.indexOfStartingPage?() ?? 0
@@ -202,15 +202,15 @@ public class EZSwipeController: UIViewController {
         setupPageViewController()
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
     }
 
-    override public func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+    override open func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         self.setFrameForCurrentOrientation()
     }
     
-    @objc public func leftButtonAction() {
+    @objc open func leftButtonAction() {
         let currentIndex = stackPageVC.index(of: currentStackVC)!
         datasource?.clickedLeftButtonFromPageIndex?(currentIndex)
 
@@ -229,7 +229,7 @@ public class EZSwipeController: UIViewController {
         pageViewController.setViewControllers([currentStackVC], direction: UIPageViewControllerNavigationDirection.reverse, animated: true, completion: nil)
     }
 
-    @objc public func rightButtonAction() {
+    @objc open func rightButtonAction() {
         let currentIndex = stackPageVC.index(of: currentStackVC)!
         datasource?.clickedRightButtonFromPageIndex?(currentIndex)
 
@@ -249,7 +249,7 @@ public class EZSwipeController: UIViewController {
         pageViewController.setViewControllers([currentStackVC], direction: UIPageViewControllerNavigationDirection.forward, animated: true, completion: nil)
     }
     
-    public func moveToPage(_ index: Int) {
+    open func moveToPage(_ index: Int) {
         let currentIndex = stackPageVC.index(of: currentStackVC)!
         
         var direction: UIPageViewControllerNavigationDirection = .reverse
@@ -267,14 +267,14 @@ public class EZSwipeController: UIViewController {
 
 extension EZSwipeController: UIPageViewControllerDataSource {
 
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if viewController == stackPageVC.first {
             return nil
         }
         return stackPageVC[stackPageVC.index(of: viewController)! - 1]
     }
 
-    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         if viewController == stackPageVC.last {
             return nil
         }
@@ -284,7 +284,7 @@ extension EZSwipeController: UIPageViewControllerDataSource {
 
 extension EZSwipeController: UIPageViewControllerDelegate {
 
-    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if !completed {
             return
         }
